@@ -82,10 +82,37 @@
     footer a { color:#6B7280; text-decoration:none; margin-left: 16px; }
     footer a:hover { color: var(--text); }
 
-    /* MOBILE OVERRIDES */
-    @media (max-width: 599px) {
-      nav { gap: 14px; }
-      nav a:nth-child(2) { display: none; } /* hide "How it works" on very small screens */
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin: -6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE NAV DRAWER */
+    .mobile-nav { display: none; }
+
+    @media (max-width: 699px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease;
+        background: rgba(250,249,247,.98);
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-nav.open { max-height: 300px; }
+      .mobile-nav a {
+        display: block;
+        padding: 14px clamp(16px, 5vw, 60px);
+        color: #4B5563;
+        text-decoration: none;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-nav a:last-child { border-bottom: none; }
       .hero { padding: 36px 0 32px; }
       section.block { padding: 36px 0; }
     }
@@ -101,8 +128,17 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="hamburger" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#samples" class="mobile-link">Samples</a>
+    <a href="#how" class="mobile-link">How it works</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
 
   <main>
     <section class="hero">
@@ -192,6 +228,21 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+    });
+    // Close menu when a link is tapped
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>
