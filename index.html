@@ -77,6 +77,16 @@
     .avatar { width: 112px; height:112px; border-radius: 999px; border:1px solid var(--border); background:#F3F4F6; overflow: hidden; margin:auto; }
     .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transform: rotate(-90deg); }
 
+    /* MARKET REPORT CARD */
+    .report-card { border: 1px solid var(--border); background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(20px, 3vw, 36px); transition: box-shadow .2s, border-color .2s; }
+    .report-card:hover { border-color: var(--text); box-shadow: 0 4px 32px rgba(0,0,0,.10); }
+    .report-stats { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    @media (min-width: 600px) { .report-stats { grid-template-columns: repeat(3, 1fr); } }
+    .report-stat { border-left: 3px solid var(--border); padding-left: 16px; }
+    .report-num { font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -.02em; color: var(--text); }
+    .report-label { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+    .report-cta { margin-top: 24px; font-size: 14px; font-weight: 600; color: var(--text); }
+
     /* CONTACT */
     .panel { border:1px solid var(--border); background: var(--panel); border-radius: 24px; padding: clamp(20px, 3vw, 36px); box-shadow: var(--shadow); }
 
@@ -130,6 +140,7 @@
         <a href="#samples">Samples</a>
         <a href="#how">How it works</a>
         <a href="#about">About</a>
+        <a href="#market-report">NYC Report</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="hamburger" id="menuBtn" aria-label="Open menu">
@@ -210,6 +221,32 @@
           <p class="subtle" style="margin-top:10px">Space Survey Labs is the brain child of Licensed Real Estate Broker Samantha D Peppard. Licensed in New York City since 2011, Samantha is well versed in commercial leasing & sales and has partnered with top ranked agents and managing partners at Vicus Partners and Cresa Global. She's adept at handling market research and data collection, knows the neighborhoods, streets, and buildings of New York City like the back of her hand, and offers the speedy professionalism required. Reach out today to learn more about how to partner with Space Survey Labs!</p>
           <p style="margin-top:14px; font-size:14px;">Want to learn more? <a href="https://samanthapeppard.com" target="_blank" rel="noopener" style="color: var(--text); font-weight:600; text-decoration:underline;">Visit samanthapeppard.com ➜</a></p>
         </div>
+      </div>
+    </section>
+
+    <section id="market-report" class="block">
+      <div class="container">
+        <h2>NYC Market Intelligence</h2>
+        <p class="subtle">Q1 2026 — Manhattan office, Brooklyn office & Manhattan retail trends by submarket.</p>
+        <a href="https://samanthapeppard.com/new-york/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="report-card" style="margin-top:24px;">
+            <div class="report-stats">
+              <div class="report-stat">
+                <div class="report-num">13.2M SF</div>
+                <div class="report-label">Manhattan Q1 Total Leasing — Historic High</div>
+              </div>
+              <div class="report-stat">
+                <div class="report-num">15.1%</div>
+                <div class="report-label">Manhattan Office Availability — Lowest since Q4 2020</div>
+              </div>
+              <div class="report-stat">
+                <div class="report-num">10.8%</div>
+                <div class="report-label">Manhattan Retail Availability — Record Low</div>
+              </div>
+            </div>
+            <div class="report-cta">View Full Report ➜</div>
+          </div>
+        </a>
       </div>
     </section>
 
